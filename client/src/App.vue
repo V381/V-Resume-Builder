@@ -1,16 +1,22 @@
 <script setup>
 import Header from './components/main-layout/Header.vue';
-import Form from './components/main-layout/Form.vue';
+import FormSteps from "./components/main-layout/FormSteps.vue";
+
 </script>
 
 <template>
-  <Header>
+  <div class="main-wrapper">
+    <Header>
   </Header>
 
-  <Form></Form>
+  <FormSteps />
 
   <RouterView />
+  </div>
 </template>
 
-<style scoped>
+<style >
+#app {
+  width: 100%;
+}
 </style>

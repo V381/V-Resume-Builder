@@ -40,15 +40,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 60vh;
+    width: 100%;
   }
   
   .input-container {
     display: flex;
+    width: 70%;
   }
   
   .column {
     margin-right: 20px;
+    width: 100%;
   }
+
+  label {
+    color: white;
+    margin: 1rem;
+  }
+
+
   </style>
   
