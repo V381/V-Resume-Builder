@@ -1,5 +1,5 @@
 <script setup>
-import Header from '../components/main-layout/Header.vue';
+import Header from './components/main-layout/Header.vue';
 </script>
 
 <template>
