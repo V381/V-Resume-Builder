@@ -33,9 +33,9 @@ import Form from './Form.vue';
 }
 
 .wizard-icon-circle.md.checked {
-  background-color: black; /* Change to your desired background color */
-  color: white !important; /* Change to your desired text color */
-  border: 2px solid green !important; /* Change to your desired border color and thickness */
+  background-color: black; 
+  color: white !important; 
+  border: 2px solid green !important;
 }
 
 .stepTitle {
