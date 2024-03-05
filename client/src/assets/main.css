@@ -1,5 +1,12 @@
 @import './base.css';
 
+
+
+#app {
+  width: 100%;
+  font-weight: normal;
+}
+
 .main-header {
   display: flex;
   justify-content: center;
@@ -24,4 +31,3 @@ span {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
-

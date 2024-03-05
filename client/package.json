@@ -11,7 +11,8 @@
   "dependencies": {
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue3-form-wizard": "^0.2.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.3",

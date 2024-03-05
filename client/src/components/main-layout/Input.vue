@@ -26,7 +26,10 @@ input {
     padding: 0.5rem; 
     color: lightgray;
     transition: 0.5s ease-in-out;
-    width: 600px;
+    width: calc(100% - 1rem);
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 input:focus {
