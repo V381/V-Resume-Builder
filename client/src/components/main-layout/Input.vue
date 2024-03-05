@@ -1,0 +1,37 @@
+<template>
+    <div>
+      <input type="text" :placeholder="placeholder" :value="value" @input="updateValue" />
+    </div>
+  </template>
+  
+  <script setup>
+  import { defineProps, ref } from 'vue';
+  
+  const props = defineProps(['placeholder', 'value']);
+  const placeholder = ref(props.placeholder || ''); 
+  const value = ref(props.value);
+  
+  const updateValue = (event) => {
+    value.value = event.target.value;
+  };
+  </script>
+  
+
+
+<style scoped>
+
+input {
+    background-color: inherit;
+    border: 1px solid hsla(160, 100%, 37%, 1);
+    padding: 0.5rem; 
+    color: lightgray;
+    transition: 0.5s ease-in-out;
+    width: 600px;
+}
+
+input:focus {
+    border-color: hsla(160, 100%, 60%, 1);
+    border-radius: none;
+}
+
+</style>
