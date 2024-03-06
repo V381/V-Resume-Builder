@@ -9,11 +9,11 @@
         <tab-content title="Projects">
             <ProjectsInputs />
         </tab-content>
-        <tab-content title="Extra Details">
-            Yuhuuu! This seems pretty damn simple
+        <tab-content title="Experience">
+            <ExperienceInputs />
         </tab-content>
         <tab-content title="Download PDF">
-            Yuhuuu! This seems pretty damn simple
+            End
         </tab-content>
 </form-wizard>
 </template>
@@ -22,7 +22,7 @@
 import Form from './Form.vue';
 import EducationInputs from './EducationInputs.vue';
 import ProjectsInputs from './ProjectsInputs.vue';
-
+import ExperienceInputs from './ExperienceInputs.vue';
 </script>
 <style>
 .wizard-icon-container {
