@@ -3,10 +3,16 @@
         <tab-content title="Personal details">
            <Form />
         </tab-content>
-        <tab-content title="Additional Info">
-            My second tab content
+        <tab-content title="Education">
+            <EducationInputs />
         </tab-content>
-        <tab-content title="Last step">
+        <tab-content title="Projects">
+            Yuhuuu! This seems pretty damn simple
+        </tab-content>
+        <tab-content title="Extra Details">
+            Yuhuuu! This seems pretty damn simple
+        </tab-content>
+        <tab-content title="Download PDF">
             Yuhuuu! This seems pretty damn simple
         </tab-content>
 </form-wizard>
@@ -14,7 +20,7 @@
 <script setup>
 
 import Form from './Form.vue';
-
+import EducationInputs from './EducationInputs.vue';
 
 </script>
 <style>

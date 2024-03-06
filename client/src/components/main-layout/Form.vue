@@ -1,11 +1,11 @@
 <template>
     <div :style="{ backgroundColor }">
-        <Inputs />
+        <MainInformationInputs />
     </div>
 </template>
 
 <script setup>
-    import Inputs from "./Inputs.vue";
+    import MainInformationInputs from "./MainInformationInputs.vue";
     const props = defineProps(['backgroundColor']);
 
 </script>

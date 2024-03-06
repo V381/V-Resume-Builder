@@ -56,7 +56,6 @@
 
   label {
     color: white;
-    margin: 1rem;
   }
 
 
