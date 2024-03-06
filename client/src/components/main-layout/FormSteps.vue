@@ -7,7 +7,7 @@
             <EducationInputs />
         </tab-content>
         <tab-content title="Projects">
-            Yuhuuu! This seems pretty damn simple
+            <ProjectsInputs />
         </tab-content>
         <tab-content title="Extra Details">
             Yuhuuu! This seems pretty damn simple
@@ -21,6 +21,7 @@
 
 import Form from './Form.vue';
 import EducationInputs from './EducationInputs.vue';
+import ProjectsInputs from './ProjectsInputs.vue';
 
 </script>
 <style>
