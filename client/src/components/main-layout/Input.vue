@@ -1,21 +1,20 @@
 <template>
     <div>
-      <input type="text" :placeholder="placeholder" :value="value" @input="updateValue" />
+      <input :type="type" :placeholder="placeholder" :value="value" @input="updateValue" />
     </div>
   </template>
   
   <script setup>
   import { defineProps, ref } from 'vue';
   
-  const props = defineProps(['placeholder', 'value']);
-  const placeholder = ref(props.placeholder || ''); 
+  const props = defineProps(['placeholder', 'value', 'type']);
+  const placeholder = ref(props.placeholder || '');
   const value = ref(props.value);
   
   const updateValue = (event) => {
     value.value = event.target.value;
   };
   </script>
-  
 
 
 <style scoped>
