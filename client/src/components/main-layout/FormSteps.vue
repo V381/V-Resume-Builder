@@ -3,14 +3,14 @@
         <tab-content title="Personal details">
            <Form />
         </tab-content>
+        <tab-content title="Experience">
+          <ExperienceInputs />
+        </tab-content>
         <tab-content title="Education">
-            <EducationInputs />
+          <EducationInputs />
         </tab-content>
         <tab-content title="Projects">
-            <ProjectsInputs />
-        </tab-content>
-        <tab-content title="Experience">
-            <ExperienceInputs />
+          <ProjectsInputs />
         </tab-content>
         <tab-content title="Download PDF">
         <div slot="pdf-content" id="pdf-content">
@@ -18,38 +18,15 @@
             <hr/>
             <h2 class="center">Personal Information</h2>
             <ul>
-                <li><strong>Email:</strong> {{ form.email }}</li>
-                <li><strong>Phone Number:</strong> {{ form.phoneNumber }}</li>
-                <li><strong>Website:</strong> {{ form.website}}</li>
-                <li><strong>Github:</strong> {{ form.github }}</li>
-                <li><strong>Linkedin:</strong> {{ form.linkedin }}</li>
-                <li><strong>Twitter:</strong> {{ form.twitter }}</li>
-                <li><strong>Linkedin:</strong> {{ form.linkedin }}</li>
-                <li><strong>Last Name:</strong> {{ form.facebook }}</li>
-                <li><strong>Instagram:</strong> {{ form.instagram}}</li>
+                <li v-if="form.email"><strong>Email:</strong> {{ form.email }}</li>
+                <li v-if="form.phoneNumber"><strong>Phone Number:</strong> {{ form.phoneNumber }}</li>
+                <li v-if="form.website"><strong>Website:</strong> {{ form.website}}</li>
+                <li v-if="form.github"><strong>Github:</strong> {{ form.github }}</li>
+                <li v-if="form.linkedin"><strong>Linkedin:</strong> {{ form.linkedin }}</li>
+                <li v-if="form.twitter"><strong>Twitter:</strong> {{ form.twitter }}</li>
+                <li v-if="form.facebook"><strong>Facebook:</strong> {{ form.facebook }}</li>
+                <li v-if="form.instagram"><strong>Instagram:</strong> {{ form.instagram}}</li>
             </ul>
-
-            <hr/>
-            <h2>Education:</h2>
-            <ul>
-            <li v-for="(education, index) in educationStore.getEducations()" :key="index">
-                <strong>School/College/University Name:</strong> {{ education.name }}<br>
-                <strong>From:</strong> {{ education.from }}<br>
-                <strong>To:</strong> {{ education.to }}<br>
-                <strong>Qualification:</strong> {{ education.title }}<br>
-            </li>
-            </ul>
-            
-            <hr/>
-            <h2>Projects:</h2>
-            <ul>
-            <li v-for="(project, index) in projectStore.getProjects()" :key="index">
-                <strong>Title:</strong> {{ project.title }}<br>
-                <strong>Link:</strong> {{ project.link }}<br>
-                <strong>Description:</strong> {{ project.description }}<br>
-            </li>
-            </ul>
-
             <hr/>
             <h2>Experience:</h2>
             <ul>
@@ -58,6 +35,29 @@
                 <strong>Title:</strong> {{ experience.title }}<br>
                 <strong>Duration:</strong> {{ experience.duration }}<br>
                 <strong>Description:</strong> {{ experience.description }}<br>
+            </li>
+            </ul>
+            <hr/>
+            <h2>Education:</h2>
+            <ul>
+              <template v-for="(education, index) in educationStore.getEducations()" :key="index">
+              <li v-if="education.name && education.from && education.to && education.qualification">
+                <strong>School/College/University Name:</strong> {{ education.name }}<br>
+                <strong>From:</strong> {{ education.from }}<br>
+                <strong>To:</strong> {{ education.to }}<br>
+                <strong>Qualification:</strong> {{ education.qualification }}<br>
+              </li>
+            </template>
+            </ul>
+            
+            <hr/>
+
+            <h2>Projects:</h2>
+            <ul>
+            <li v-for="(project, index) in projectStore.getProjects()" :key="index">
+                <strong>Title:</strong> {{ project.title }}<br>
+                <strong>Link:</strong> {{ project.link }}<br>
+                <strong>Description:</strong> {{ project.description }}<br>
             </li>
             </ul>
         </div>
@@ -69,7 +69,7 @@
 </template>
 <script>
 import Vue3Html2pdf from 'vue3-html2pdf';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useFormStore } from '../../stores/FormStore';
 import { usedEducationStore } from '../../stores/EducationStore';
 import { useProjectStore } from '../../stores/ProjectFormStore';
@@ -130,6 +130,24 @@ export default {
       }
     };
 
+    const isFormEmpty = computed(() => {
+      return (
+        !form.firstName ||
+        !form.lastName ||
+        !form.email ||
+        !form.phoneNumber ||
+        !form.website ||
+        !form.github ||
+        !form.linkedin ||
+        !form.twitter ||
+        !form.facebook ||
+        !form.instagram ||
+        educationStore.getEducations().some(education => !education.name || !education.from || !education.to || !education.qualification) ||
+        projectStore.getProjects().some(project => !project.title || !project.link || !project.description) ||
+        experienceStore.getExperiences().some(experience => !experience.organization || !experience.title || !experience.duration || !experience.description)
+      );
+    });
+
     return {
       form,
       generatePDF,
@@ -137,6 +155,7 @@ export default {
       projectStore,
       experienceStore,
       html2PdfRef,
+      isFormEmpty
     };
   },
 };
