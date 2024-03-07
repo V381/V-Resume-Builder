@@ -9,13 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
+    "vue-html2pdf": "^1.8.0",
     "vue-router": "^4.2.5",
-    "vue3-form-wizard": "^0.2.3"
+    "vue3-form-wizard": "^0.2.3",
+    "vue3-html2pdf": "^1.1.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.3",
+    "sass": "^1.71.1",
     "vite": "^5.0.11"
   }
 }

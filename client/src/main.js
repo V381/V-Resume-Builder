@@ -8,10 +8,13 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import VueHtml2pdf from 'vue-html2pdf';
+
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(Vue3FormWizard);
+app.use(VueHtml2pdf);
 app.mount('#app')
