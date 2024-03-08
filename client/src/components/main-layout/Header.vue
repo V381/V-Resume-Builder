@@ -1,26 +1,39 @@
 <script setup>
-import { ModalsContainer, useModal } from 'vue-final-modal'
+import { ModalsContainer, useModal } from 'vue-final-modal';
 import SelectLanguage from "./SelectLanguage.vue";
 import CountryFlag from 'vue-country-flag-next';
+import { ref, watch, computed } from 'vue';
+import { changeLocale, i18n } from '@/main';
 
 const { open, close } = useModal({
   component: SelectLanguage,
   attrs: {
     title: 'Hello World!',
     onConfirm() {
-      close()
+      close();
     },
   },
-})
+});
+
+const flag = computed(() => {
+  const flagMap = {
+    'en': 'gb',
+    'rs': 'rs',
+  };
+  return flagMap[i18n.global.locale.value];
+});
+
+watch(() => i18n.global.locale.value, (newLocale) => {
+  console.log(`Current locale changed to: ${newLocale}`);
+});
 </script>
 
 <template>
   <div class="main-header">
-    <span></span>
-    <h1 class="red center">V <span class="green">Resume Builder</span></h1>
+    <h1 class="red center">V <span class="green">Resume Builder</span> <br/> <span class="author">created with <span class="heart">♡</span> by Pavle Paunovic</span></h1>
     <div class="language-flag-container">
-      <p>Language</p>
-      <CountryFlag country='gb' size='big' @click="() => open()" />
+      <p>{{ $t('language') }}</p>
+      <CountryFlag :country="flag" size="big" @click="() => open()" />
     </div>
     <ModalsContainer />
   </div>
@@ -44,7 +57,9 @@ const { open, close } = useModal({
 }
 
 .author {
-    font-size: 0.6rem;
+  font-size: 0.6rem;
 }
-
+.heart {
+    color: red;
+}
 </style>

@@ -2,30 +2,30 @@
   <div class="center-container">
     <div class="input-container">
       <div class="column">
-        <label for="first-name">First Name:</label>
-        <Input v-model="form.firstName" :placeholder="'Enter first name...*'" />
-        <label for="email">Email:</label>
-        <Input v-model="form.email" :placeholder="'Enter email...*'" />
-        <label for="your-website">Your Website:</label>
-        <Input v-model="form.website" :placeholder="'Enter website...'" />
-        <label for="linkedin">LinkedIn</label>
-        <Input v-model="form.linkedin" :placeholder="'Enter Linkedin'" />
-        <label for="facebook">Facebook</label>
-        <Input v-model="form.facebook" :placeholder="'Enter facebook...'" />
+        <label for="first-name">{{ $t('firstName') }}</label>
+        <Input v-model="form.firstName" :placeholder="$t('firstName')" />
+        <label for="email">{{ $t('email') }}</label>
+        <Input v-model="form.email" :placeholder="$t('email')" />
+        <label for="your-website">{{ $t('website') }}</label>
+        <Input v-model="form.website" :placeholder="$t('website')" />
+        <label for="linkedin">{{ $t('linkedin') }}</label>
+        <Input v-model="form.linkedin" :placeholder="$t('linkedin')" />
+        <label for="facebook">{{ $t('facebook') }}</label>
+        <Input v-model="form.facebook" :placeholder="$t('facebook')" />
       </div>
 
       <div class="column">
-        <label for="last-name">Last name</label>
-        <Input v-model="form.lastName" :placeholder="'Enter last name...*'" />
+        <label for="last-name">{{ $t('lastName') }}</label>
+        <Input v-model="form.lastName" :placeholder="$t('lastName')" />
 
-        <label for="phone-number">Phone Number</label>
-        <Input v-model="form.phoneNumber" :placeholder="'Enter phone number...*'" />
-        <label for="github">Github</label>
-        <Input v-model="form.github" :placeholder="'Enter Github...'" />
-        <label for="twitter">Twitter</label>
-        <Input v-model="form.twitter" :placeholder="'Enter Twitter...'" />
-        <label for="instagram">Instagram</label>
-        <Input v-model="form.instagram" :placeholder="'Enter Instagram...'" />
+        <label for="phone-number">{{ $t('phoneNumber') }}</label>
+        <Input v-model="form.phoneNumber" :placeholder="$t('phoneNumber')" />
+        <label for="github">{{ $t('github') }}</label>
+        <Input v-model="form.github" :placeholder="$t('github')" />
+        <label for="twitter">{{ $t('twitter') }}</label>
+        <Input v-model="form.twitter" :placeholder="$t('twitter')" />
+        <label for="instagram">{{ $t('instagram') }}</label>
+        <Input v-model="form.instagram" :placeholder="$t('instagram')" />
       </div>
     </div>
   </div>

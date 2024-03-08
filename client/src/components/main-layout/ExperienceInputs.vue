@@ -1,29 +1,30 @@
 <template>
   <div>
     <form v-for="(experience, index) in experiences" :key="index">
-      <p class="organization-title">Organization {{ index + 1 }}</p>
+      <p class="organization-title">{{ $t('organizationCompany', { index: index + 1 }) }}</p>
       <label>
-        Organization
-        <Input v-model="experience.organization" :placeholder="'Enter organization...'" />
+        {{ $t('organization') }}
+        <Input v-model="experience.organization" :placeholder="$t('organization')" />
       </label>
       <label>
-        Enter title (Software Developer, Designer....)
-        <Input v-model="experience.title" :placeholder="'Enter title...'" />
+        {{ $t('organizationTitle') }}
+        <Input v-model="experience.title" :placeholder="$t('organizationTitle')" />
       </label>
       <label>
-        Duration
-        <Input v-model="experience.duration" :placeholder="'Enter duration'" />
+        {{ $t('duration') }}
+        <Input v-model="experience.duration" :placeholder="$t('duration')" />
       </label>
       <label>
-        Description
-        <Input v-model="experience.description" :placeholder="'Enter description'" />
+        {{ $t('description') }}
+        <Input v-model="experience.description" :placeholder="$t('description')" />
       </label>
     </form>
     <div class="container">
-      <button @click="addExperience" class="center-button">Add experience</button>
+      <button @click="addExperience" class="center-button">{{ $t('addExperience') }}</button>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import Input from "./Input.vue";

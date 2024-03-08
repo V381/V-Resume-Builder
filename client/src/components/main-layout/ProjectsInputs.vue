@@ -1,25 +1,26 @@
 <template>
   <div>
     <form v-for="(project, index) in projects" :key="index">
-      <p class="project-title">Project {{ index + 1 }}</p>
+      <p class="project-title">{{ $t('projectTitle') }} {{ index + 1 }}</p>
       <label>
-        Title
-        <Input v-model="project.title" :placeholder="'Enter title...'" />
+        {{ $t('projectTitle') }}
+        <Input v-model="project.title" :placeholder="$t('projectTitle')" />
       </label>
       <label>
-        Link
-        <Input v-model="project.link" :placeholder="'Enter link...'" />
+        {{ $t('projectLink') }}
+        <Input v-model="project.link" :placeholder="$t('projectLink')" />
       </label>
       <label>
-        Description
-        <Input v-model="project.description" :placeholder="'Enter description'" />
+        {{ $t('projectDescription') }}
+        <Input v-model="project.description" :placeholder="$t('description')" />
       </label>
     </form>
     <div class="container">
-      <button @click="addProject" class="center-button">Add project</button>
+      <button @click="addProject" class="center-button">{{ $t('addProject') }}</button>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import Input from "./Input.vue";
