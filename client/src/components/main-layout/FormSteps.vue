@@ -14,55 +14,55 @@
         </tab-content>
         <tab-content title="Download PDF">
         <div slot="pdf-content" id="pdf-content">
-            <h2><strong>First Name:</strong> {{ form.firstName }} <strong>Last Name:</strong> {{ form.lastName }}</h2>
+            <h2><strong>{{ $t('firstName') }}:</strong> {{ form.firstName }} <br><strong>{{ $t('lastName') }}:</strong> {{ form.lastName }}</h2>
             <hr/>
-            <h2 class="center">Personal Information</h2>
+            <h2 class="center">{{ $t('personalInformation') }}</h2>
             <ul>
-                <li v-if="form.email"><strong>Email:</strong> {{ form.email }}</li>
-                <li v-if="form.phoneNumber"><strong>Phone Number:</strong> {{ form.phoneNumber }}</li>
-                <li v-if="form.website"><strong>Website:</strong> {{ form.website}}</li>
-                <li v-if="form.github"><strong>Github:</strong> {{ form.github }}</li>
-                <li v-if="form.linkedin"><strong>Linkedin:</strong> {{ form.linkedin }}</li>
-                <li v-if="form.twitter"><strong>Twitter:</strong> {{ form.twitter }}</li>
-                <li v-if="form.facebook"><strong>Facebook:</strong> {{ form.facebook }}</li>
-                <li v-if="form.instagram"><strong>Instagram:</strong> {{ form.instagram}}</li>
+                <li v-if="form.email"><strong>{{ $t('email') }}:</strong> {{ form.email }}</li>
+                <li v-if="form.phoneNumber"><strong>{{ $t('phoneNumber') }}:</strong> {{ form.phoneNumber }}</li>
+                <li v-if="form.website"><strong>{{ $t('website') }}:</strong> {{ form.website}}</li>
+                <li v-if="form.github"><strong>{{ $t('github') }}:</strong> {{ form.github }}</li>
+                <li v-if="form.linkedin"><strong>{{ $t('linkedin') }}:</strong> {{ form.linkedin }}</li>
+                <li v-if="form.twitter"><strong>{{ $t('twitter') }}:</strong> {{ form.twitter }}</li>
+                <li v-if="form.facebook"><strong>{{ $t('facebook') }}:</strong> {{ form.facebook }}</li>
+                <li v-if="form.instagram"><strong>{{ $t('instagram') }}:</strong> {{ form.instagram}}</li>
             </ul>
             <hr/>
-            <h2>Experience:</h2>
+            <h2>{{ $t('workExperience') }}</h2>
             <ul>
             <li v-for="(experience, index) in experienceStore.getExperiences()" :key="index">
-                <strong>Organization:</strong> {{ experience.organization }}<br>
-                <strong>Title:</strong> {{ experience.title }}<br>
-                <strong>Duration:</strong> {{ experience.duration }}<br>
-                <strong>Description:</strong> {{ experience.description }}<br>
+                <strong>{{ $t('organizationCompany') }}:</strong> {{ experience.organization }}<br>
+                <strong>{{ $t('organizationName') }}:</strong> {{ experience.title }}<br>
+                <strong>{{ $t('duration') }}:</strong> {{ experience.duration }}<br>
+                <strong>{{ $t('description') }}:</strong> {{ experience.description }}<br>
             </li>
             </ul>
             <hr/>
-            <h2>Education:</h2>
+            <h2>{{ $t('education') }}</h2>
             <ul>
               <template v-for="(education, index) in educationStore.getEducations()" :key="index">
               <li v-if="education.name && education.from && education.to && education.qualification">
-                <strong>School/College/University Name:</strong> {{ education.name }}<br>
-                <strong>From:</strong> {{ education.from }}<br>
-                <strong>To:</strong> {{ education.to }}<br>
-                <strong>Qualification:</strong> {{ education.qualification }}<br>
+                <strong>{{ $t('school') }}:</strong> {{ education.name }}<br>
+                <strong>{{ $t('from') }}:</strong> {{ education.from }}<br>
+                <strong>{{ $t('to') }}:</strong> {{ education.to }}<br>
+                <strong>{{ $t('educationTitle') }}:</strong> {{ education.qualification }}<br>
               </li>
             </template>
             </ul>
             
             <hr/>
 
-            <h2>Projects:</h2>
+            <h2>{{ $t('projects') }}</h2>
             <ul>
             <li v-for="(project, index) in projectStore.getProjects()" :key="index">
-                <strong>Title:</strong> {{ project.title }}<br>
-                <strong>Link:</strong> {{ project.link }}<br>
-                <strong>Description:</strong> {{ project.description }}<br>
+                <strong>{{ $t('projectTitle') }}:</strong> {{ project.title }}<br>
+                <strong>{{ $t('projectLink') }}:</strong> {{ project.link }}<br>
+                <strong>{{ $t('projectDescription') }}:</strong> {{ project.description }}<br>
             </li>
             </ul>
         </div>
       <div class="container-center">
-        <button class="generate-pdf" @click="generatePDF">Generate Pdf</button>
+        <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
       </div>
     </tab-content>
 </form-wizard>
@@ -228,5 +228,8 @@ button:hover {
     text-align: center;
 }
 
+strong {
+  font-weight: bold;
+}
 
 </style>

@@ -1,28 +1,28 @@
 <template>
-    <div>
+  <div>
       <form v-for="(education, index) in educations" :key="index">
-        <label>
-          School/College/University Name
-          <Input v-model="education.name" :placeholder="'Enter name...'" />
-        </label>
-        <label>
-          From
-          <Input v-model="education.from" :type="'date'" :placeholder="'From...'" />
-        </label>
-        <label>
-          To
-          <Input v-model="education.to" :type="'date'" :placeholder="'To...'" />
-        </label>
-        <label>
-          Title
-          <Input v-model="education.qualification" :placeholder="'Qualification'" />
-        </label>
+          <label>
+              {{ $t('school') }}
+              <Input v-model="education.name" :placeholder="$t('school')" />
+          </label>
+          <label>
+              {{ $t('from') }}
+              <Input v-model="education.from" :type="'date'" :placeholder="$t('from')" />
+          </label>
+          <label>
+              {{ $t('to') }}
+              <Input v-model="education.to" :type="'date'" :placeholder="$t('to')" />
+          </label>
+          <label>
+              {{ $t('educationTitle') }}
+              <Input v-model="education.qualification" :placeholder="$t('educationTitle')" />
+          </label>
       </form>
       <div class="container">
-        <button @click="addEducation" class="center-button">Add education</button>
+          <button @click="addEducation" class="center-button">{{ $t('addEducation') }}</button>
       </div>
-    </div>
-  </template>
+  </div>
+</template>
   
   <script setup>
   import Input from "./Input.vue";
