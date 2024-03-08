@@ -1,18 +1,18 @@
 <template>
     <form-wizard>
-        <tab-content title="Personal details">
+        <tab-content  :title="getTranslated('wizardPersonalDetails')">
            <Form />
         </tab-content>
-        <tab-content title="Experience">
+        <tab-content :title="getTranslated('wizardExperience')">
           <ExperienceInputs />
         </tab-content>
-        <tab-content title="Education">
+        <tab-content :title="getTranslated('wizardEducation')">
           <EducationInputs />
         </tab-content>
-        <tab-content title="Projects">
+        <tab-content  :title="getTranslated('wizardProjects')">
           <ProjectsInputs />
         </tab-content>
-        <tab-content title="Download PDF">
+        <tab-content :title="getTranslated('wizardPDF')">
         <div slot="pdf-content" id="pdf-content">
             <h2><strong>{{ $t('firstName') }}:</strong> {{ form.firstName }} <br><strong>{{ $t('lastName') }}:</strong> {{ form.lastName }}</h2>
             <hr/>
@@ -68,6 +68,7 @@
 </form-wizard>
 </template>
 <script>
+import { useI18n } from 'vue-i18n';
 import Vue3Html2pdf from 'vue3-html2pdf';
 import { ref, onMounted, computed } from 'vue';
 import { useFormStore } from '../../stores/FormStore';
@@ -79,6 +80,7 @@ import EducationInputs from './EducationInputs.vue';
 import ProjectsInputs from './ProjectsInputs.vue';
 import ExperienceInputs from './ExperienceInputs.vue';
 import html2pdf from 'html2pdf.js';
+
 
 export default {
   components: {
@@ -95,6 +97,9 @@ export default {
     const experienceStore = useExperienceStore();
 
     const html2PdfRef = ref(null);
+    const { t } = useI18n();
+
+    const getTranslated = (key) => t(key);
 
     onMounted(() => {
       html2PdfRef.value = ref('html2Pdf');
@@ -155,7 +160,8 @@ export default {
       projectStore,
       experienceStore,
       html2PdfRef,
-      isFormEmpty
+      isFormEmpty,
+      getTranslated
     };
   },
 };

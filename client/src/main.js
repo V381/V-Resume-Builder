@@ -48,7 +48,12 @@ const messages = {
         education: "Education",
         generatePDF: "Generate PDF",
         projects: "Projects",
-        confirm: "Confirm Language Change"
+        confirm: "Confirm Language Change",
+        wizardPersonalDetails: "Personal details",
+        wizardEducation: "Education",
+        wizardProjects: "Projects",
+        wizardExperience: "Experience",
+        wizardPDF: "Download PDF"
     },
     rs: {
         firstName: 'Ime',
@@ -86,7 +91,12 @@ const messages = {
         personalInformation: "Lične informacije",
         workExperience: "Radno iskustvo",
         education: "Obrazovanje",
-        generatePDF: "Skini PDF fajl"
+        generatePDF: "Skini PDF fajl",
+        wizardPersonalDetails: "Lične informacije",
+        wizardEducation: "Obrazovanje",
+        wizardProjects: "Projekti",
+        wizardExperience: "Radno iskustvo",
+        wizardPDF: "Skini PDF fajl"
     },
 };
 
