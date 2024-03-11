@@ -52,7 +52,7 @@ const removeProject = (project) => {
   background-color: hsla(0, 100%, 50%, 1);
   color: white;
   cursor: pointer;
-  width: 20%;
+  width: auto;
 }
 button {
   background-color: hsla(160, 100%, 37%, 1);
