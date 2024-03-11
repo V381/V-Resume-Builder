@@ -12,6 +12,13 @@ export const usedEducationStore = defineStore({
       this.educations.push(education);
     },
 
+    removeEducation(education) {
+      const index = this.educations.indexOf(education);
+      if (index !== -1) {
+        this.educations.splice(index, 1);
+      }
+    },
+
     getEducations() {
       return this.educations;
     },

@@ -12,6 +12,13 @@ export const useExperienceStore = defineStore({
       this.experiences.push(experience);
     },
 
+    removeExperience(experience) {
+      const index = this.experiences.indexOf(experience);
+      if (index !== -1) {
+        this.experiences.splice(index, 1);
+      }
+    },
+
     getExperiences() {
       return this.experiences;
     },
