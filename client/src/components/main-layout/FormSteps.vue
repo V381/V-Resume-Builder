@@ -32,7 +32,7 @@
             <ul>
             <li v-for="(experience, index) in experienceStore.getExperiences()" :key="index">
                 <strong>{{ $t('organizationCompany') }}:</strong> {{ experience.organization }}<br>
-                <strong>{{ $t('organizationName') }}:</strong> {{ experience.title }}<br>
+                <strong>{{ $t('organizationTitle') }}:</strong> {{ experience.title }}<br>
                 <strong>{{ $t('duration') }}:</strong> {{ experience.duration }}<br>
                 <strong>{{ $t('description') }}:</strong> {{ experience.description }}<br>
             </li>

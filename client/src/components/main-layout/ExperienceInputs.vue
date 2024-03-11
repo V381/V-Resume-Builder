@@ -1,10 +1,10 @@
 <template>
   <div>
-    <form v-for="(experience, index) in experiences" :key="index">
+    <form v-for="(experience, index) in experiences" :key="experience.id" @submit.prevent>
       <p class="organization-title">{{ $t('organizationCompany', { index: index + 1 }) }}</p>
       <label>
-        {{ $t('organization') }}
-        <Input v-model="experience.organization" :placeholder="$t('organization')" />
+        {{ $t('organizationCompany') }}
+        <Input v-model="experience.organization" :placeholder="$t('organizationCompany')" />
       </label>
       <label>
         {{ $t('organizationTitle') }}
@@ -18,13 +18,15 @@
         {{ $t('description') }}
         <Input v-model="experience.description" :placeholder="$t('description')" />
       </label>
+      <button class="remove-button" @click="() => removeExperience(experience)">
+        {{ $t('removeExperience') }}
+      </button>
     </form>
     <div class="container">
       <button @click="addExperience" class="center-button">{{ $t('addExperience') }}</button>
     </div>
   </div>
 </template>
-
 
 <script setup>
 import Input from "./Input.vue";
@@ -36,13 +38,17 @@ const experiences = ref(experienceStore.getExperiences());
 
 const addExperience = () => {
   const newExperience = {
+    id: new Date(),
     organization: '',
     title: '',
     duration: '',
     description: '',
   };
   experienceStore.addExperience(newExperience);
-  console.log(experienceStore.getExperiences());
+};
+
+const removeExperience = (experience) => {
+  experienceStore.removeExperience(experience);
 };
 
 watch(
@@ -54,6 +60,14 @@ watch(
 </script>
 
 <style scoped>
+
+.remove-button {
+  background-color: hsla(0, 100%, 50%, 1);
+  color: white;
+  cursor: pointer;
+  width: 20%;
+}
+
 button {
   background-color: hsla(160, 100%, 37%, 1);
   padding: 1rem;

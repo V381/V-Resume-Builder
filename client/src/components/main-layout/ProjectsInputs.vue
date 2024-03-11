@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-for="(project, index) in projects" :key="index">
+    <form v-for="(project, index) in projects" :key="project.id" @submit.prevent>
       <p class="project-title">{{ $t('projectTitle') }} {{ index + 1 }}</p>
       <label>
         {{ $t('projectTitle') }}
@@ -14,13 +14,13 @@
         {{ $t('projectDescription') }}
         <Input v-model="project.description" :placeholder="$t('description')" />
       </label>
+      <button class="remove-button" @click="() => removeProject(project)">{{ $t('removeProject') }}</button>
     </form>
     <div class="container">
       <button @click="addProject" class="center-button">{{ $t('addProject') }}</button>
     </div>
   </div>
 </template>
-
 
 <script setup>
 import Input from "./Input.vue";
@@ -34,15 +34,26 @@ const projects = ref(projectStore.getProjects());
 
 const addProject = () => {
   const newProject = {
+    id: new Date(),
     title: '',
     link: '',
     description: '',
   };
   projectStore.addProject(newProject);
 };
+
+const removeProject = (project) => {
+  projectStore.removeProject(project);
+};
 </script>
 
 <style scoped>
+.remove-button {
+  background-color: hsla(0, 100%, 50%, 1);
+  color: white;
+  cursor: pointer;
+  width: 20%;
+}
 button {
   background-color: hsla(160, 100%, 37%, 1);
   padding: 1rem;
