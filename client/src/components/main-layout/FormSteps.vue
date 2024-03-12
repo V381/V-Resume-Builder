@@ -16,7 +16,7 @@
         <div slot="pdf-content" id="pdf-content">
             <h2><strong>{{ $t('firstName') }}:</strong> {{ form.firstName }} <br><strong>{{ $t('lastName') }}:</strong> {{ form.lastName }}</h2>
             <hr/>
-            <h2 class="center">{{ $t('personalInformation') }}</h2>
+            <h2>{{ $t('personalInformation') }}</h2>
             <ul>
                 <li v-if="form.email"><strong>{{ $t('email') }}:</strong> {{ form.email }}</li>
                 <li v-if="form.phoneNumber"><strong>{{ $t('phoneNumber') }}:</strong> {{ form.phoneNumber }}</li>
@@ -220,7 +220,7 @@ button:hover {
 }
 
 #pdf-content h2 {
-    text-align: center;
+    margin-left: 1rem;
     padding-top: 1rem;
     font-style: italic;
     font-weight: bold;
