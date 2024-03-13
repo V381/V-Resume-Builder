@@ -1,6 +1,6 @@
 <template>
     <form-wizard>
-        <tab-content  :title="getTranslated('wizardPersonalDetails')">
+        <tab-content :title="getTranslated('wizardPersonalDetails')">
            <Form />
         </tab-content>
         <tab-content :title="getTranslated('wizardExperience')">
@@ -65,12 +65,40 @@
         <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
       </div>
     </tab-content>
+    <template v-slot:footer="props">
+      <div class="wizard-footer-left">
+        <button
+          v-if="props.activeTabIndex > 0"
+          @click.native="props.prevTab()"
+          class="wizard-button"
+        >
+        {{ $t('previous') }}
+        </button>
+      </div>
+      <div class="wizard-footer-right">
+        <button
+          v-if="!props.isLastStep"
+          @click.native="props.nextTab()"
+          class="wizard-button"
+        >
+        {{ $t('next') }}
+        </button>
+
+        <button
+          v-else
+          @click.native="confirmMethod"
+          class="finish-button"
+        >
+          {{ props.isLastStep ? "Done" : "Next" }}
+        </button>
+      </div>
+    </template>
 </form-wizard>
 </template>
 <script>
 import { useI18n } from 'vue-i18n';
 import Vue3Html2pdf from 'vue3-html2pdf';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, reactive } from 'vue';
 import { useFormStore } from '../../stores/FormStore';
 import { usedEducationStore } from '../../stores/EducationStore';
 import { useProjectStore } from '../../stores/ProjectFormStore';
@@ -80,7 +108,6 @@ import EducationInputs from './EducationInputs.vue';
 import ProjectsInputs from './ProjectsInputs.vue';
 import ExperienceInputs from './ExperienceInputs.vue';
 import html2pdf from 'html2pdf.js';
-
 
 export default {
   components: {
@@ -161,7 +188,7 @@ export default {
       experienceStore,
       html2PdfRef,
       isFormEmpty,
-      getTranslated
+      getTranslated,
     };
   },
 };
@@ -201,7 +228,8 @@ button {
   padding: 1rem;
   color: white;
   margin-top: 1rem;
-  width: 50%;
+
+  width: auto;
 }
 
 button:hover {
@@ -237,5 +265,19 @@ button:hover {
 strong {
   font-weight: bold;
 }
-
+.wizard-card-footer .wizard-footer-left .wizard-button {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: lighgreen;
+  width: auto;
+}
+.wizard-card-footer .wizard-footer-right .wizard-button {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.wizard-card-footer .wizard-footer-right .finish-button {
+  display: none;
+}
 </style>

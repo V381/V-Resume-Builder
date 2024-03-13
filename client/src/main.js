@@ -56,7 +56,9 @@ const messages = {
         wizardEducation: "Education",
         wizardProjects: "Projects",
         wizardExperience: "Experience",
-        wizardPDF: "Download PDF"
+        wizardPDF: "Download PDF",
+        previous: "Previous",
+        next: "Next",
     },
     rs: {
         firstName: 'Ime',
@@ -97,12 +99,14 @@ const messages = {
         personalInformation: "Lične informacije",
         workExperience: "Radno iskustvo",
         education: "Obrazovanje",
-        generatePDF: "Skini PDF fajl",
+        generatePDF: "Preuzmi PDF fajl",
         wizardPersonalDetails: "Lične informacije",
         wizardEducation: "Obrazovanje",
         wizardProjects: "Projekti",
         wizardExperience: "Radno iskustvo",
-        wizardPDF: "Skini PDF fajl"
+        wizardPDF: "Preuzmi PDF fajl",
+        previous: "Prethodni korak",
+        next: "Sledeći korak",
     },
 };
 
