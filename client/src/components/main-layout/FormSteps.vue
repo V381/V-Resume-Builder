@@ -63,6 +63,7 @@
         </div>
       <div class="container-center">
         <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
+        <button class="generate-pdf" @click="generateDOC">{{ $t('wizardDOC') }}</button>
       </div>
     </tab-content>
     <template v-slot:footer="props">
@@ -162,6 +163,21 @@ export default {
       }
     };
 
+    const generateDOC = async () => {
+      const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+          "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+          "xmlns='http://www.w3.org/TR/REC-html40'>" +
+          "<head><meta charset='utf-8'><title>Resume</title></head><body>";
+      const footer = "</body></html>";
+      const sourceHTML = header + document.getElementById("pdf-content").innerHTML + footer;
+      const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+      const fileDownload = document.createElement("a");
+      fileDownload.href = source;
+      fileDownload.download = 'resume.doc';
+      fileDownload.click();
+      document.body.removeChild(fileDownload);
+    };
+
     const isFormEmpty = computed(() => {
       return (
         !form.firstName ||
@@ -189,6 +205,7 @@ export default {
       html2PdfRef,
       isFormEmpty,
       getTranslated,
+      generateDOC
     };
   },
 };
