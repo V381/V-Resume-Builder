@@ -57,7 +57,7 @@ const messages = {
         wizardProjects: "Projects",
         wizardExperience: "Experience",
         wizardPDF: "Download PDF",
-        wizardDOC: "Generate DOC - You can edit DOC the file in Word",
+        wizardDOC: "Generate DOC - You can edit DOC file in Word",
         previous: "Previous",
         next: "Next",
     },
