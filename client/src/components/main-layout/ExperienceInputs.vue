@@ -2,12 +2,15 @@
   <div>
     <CustomForm 
       :items="items"
-      organizationTitleKey="organizationCompany"
-      titleKey="organizationTitle"
-      durationKey="duration"
-      descriptionKey="description"
-      removeKey="remove"
-      addKey="add"
+      formType="experience"
+      :organizationTitleKey="$t('organizationCompany')"
+      :titleKey="$t('organizationTitle')"
+      :durationKey="$t('duration')"
+      :descriptionKey="$t('description')"
+      :removeKey="$t('removeExperience')"
+      :addKey="$t('addExperience')"
+      :remove="remove"
+      :add="add"
     />
   </div>
 </template>
