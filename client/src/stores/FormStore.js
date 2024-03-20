@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia';
-import { usedEducationStore } from './EducationStore';
-import { useExperienceStore } from './ExperienceStore';
 
 export const useFormStore = defineStore({
   id: 'form',
@@ -19,15 +17,6 @@ export const useFormStore = defineStore({
   }),
 
   actions: {
-    getProjects() {
-      return useProjectStore().getProjects();
-    },
-    getEducation() {
-      return usedEducationStore().getededucations();
-    },
-    getExperience() {
-      return useExperienceStore().getExperiences();
-    },
     getFormData() {
       return {
         firstName: this.firstName,
