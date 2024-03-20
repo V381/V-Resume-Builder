@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-for="(experience, index) in experiences" :key="experience.id" @submit.prevent>
+    <form v-for="(experience, index) in items" :key="experience.id" @submit.prevent>
       <p class="organization-title">{{ $t('organizationCompany', { index: index + 1 }) }}</p>
       <label>
         {{ $t('organizationCompany') }}
@@ -18,74 +18,30 @@
         {{ $t('description') }}
         <Input v-model="experience.description" :placeholder="$t('description')" />
       </label>
-      <button class="remove-button" @click="() => removeExperience(experience)">
+      <button class="remove-button" @click="() => remove(experience)">
         {{ $t('removeExperience') }}
       </button>
     </form>
     <div class="container">
-      <button @click="addExperience" class="center-button">{{ $t('addExperience') }}</button>
+      <button @click="add" class="center-button">{{ $t('addExperience') }}</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import Input from "./Input.vue";
-import { useExperienceStore } from "../../stores/ExperienceStore";
-import { ref, watch } from 'vue';
+import { useExperienceStore } from "@/stores/storeTemplate";
+import Input from "@/components/main-layout/Input.vue";
+import useStoreItems from "@/helpers/useStoreItems";
 
-const experienceStore = useExperienceStore();
-const experiences = ref(experienceStore.getExperiences());
-
-const addExperience = () => {
-  const newExperience = {
-    id: new Date(),
-    organization: '',
-    title: '',
-    duration: '',
-    description: '',
-  };
-  experienceStore.addExperience(newExperience);
-};
-
-const removeExperience = (experience) => {
-  experienceStore.removeExperience(experience);
-};
-
-watch(
-  () => experienceStore.getExperiences(),
-  (newExperiences) => {
-    console.log('Experiences updated:', newExperiences);
-  }
+const { items, add, remove } = useStoreItems(
+  useExperienceStore,
+  'addItem',
+  'removeItem'
 );
 </script>
 
+
 <style scoped>
-
-.remove-button {
-  background-color: hsla(0, 100%, 50%, 1);
-  color: white;
-  cursor: pointer;
-  width: auto;
-}
-
-button {
-  background-color: hsla(160, 100%, 37%, 1);
-  padding: 1rem;
-  color: white;
-  margin-top: 1rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-label {
-  color: white;
-}
-
 .organization-title {
   color: white;
   font-size: 2rem;

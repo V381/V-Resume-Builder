@@ -30,7 +30,7 @@
             <hr/>
             <h2>{{ $t('workExperience') }}</h2>
             <ul>
-            <li v-for="(experience, index) in experienceStore.getExperiences()" :key="index">
+            <li v-for="(experience, index) in experienceStore.getItems()" :key="index">
                 <strong>{{ $t('organizationCompany') }}:</strong> {{ experience.organization }}<br>
                 <strong>{{ $t('organizationTitle') }}:</strong> {{ experience.title }}<br>
                 <strong>{{ $t('duration') }}:</strong> {{ experience.duration }}<br>
@@ -40,7 +40,7 @@
             <hr/>
             <h2>{{ $t('education') }}</h2>
             <ul>
-              <template v-for="(education, index) in educationStore.getEducations()" :key="index">
+              <template v-for="(education, index) in educationStore.getItems()" :key="index">
               <li v-if="education.name && education.from && education.to && education.qualification">
                 <strong>{{ $t('school') }}:</strong> {{ education.name }}<br>
                 <strong>{{ $t('from') }}:</strong> {{ education.from }}<br>
@@ -54,7 +54,7 @@
 
             <h2>{{ $t('projects') }}</h2>
             <ul>
-            <li v-for="(project, index) in projectStore.getProjects()" :key="index">
+            <li v-for="(project, index) in projectStore.getItems()" :key="index">
                 <strong>{{ $t('projectTitle') }}:</strong> {{ project.title }}<br>
                 <strong>{{ $t('projectLink') }}:</strong> {{ project.link }}<br>
                 <strong>{{ $t('projectDescription') }}:</strong> {{ project.description }}<br>
@@ -100,10 +100,8 @@
 import { useI18n } from 'vue-i18n';
 import Vue3Html2pdf from 'vue3-html2pdf';
 import { ref, onMounted, computed, reactive } from 'vue';
-import { useFormStore } from '../../stores/FormStore';
-import { usedEducationStore } from '../../stores/EducationStore';
-import { useProjectStore } from '../../stores/ProjectFormStore';
-import { useExperienceStore } from '../../stores/ExperienceStore';
+import { useFormStore } from '@/stores/FormStore';
+import { useEducationStore, useProjectStore, useExperienceStore } from '@/stores/storeTemplate';
 import Form from './Form.vue';
 import EducationInputs from './EducationInputs.vue';
 import ProjectsInputs from './ProjectsInputs.vue';
@@ -120,7 +118,7 @@ export default {
   },
   setup() {
     const form = useFormStore();
-    const educationStore = usedEducationStore();
+    const educationStore = useEducationStore();
     const projectStore = useProjectStore();
     const experienceStore = useExperienceStore();
 
@@ -190,9 +188,9 @@ export default {
         !form.twitter ||
         !form.facebook ||
         !form.instagram ||
-        educationStore.getEducations().some(education => !education.name || !education.from || !education.to || !education.qualification) ||
-        projectStore.getProjects().some(project => !project.title || !project.link || !project.description) ||
-        experienceStore.getExperiences().some(experience => !experience.organization || !experience.title || !experience.duration || !experience.description)
+        educationStore.getItems().some(education => !education.name || !education.from || !education.to || !education.qualification) ||
+        projectStore.getItems().some(project => !project.title || !project.link || !project.description) ||
+        experienceStore.getItems().some(experience => !experience.organization || !experience.title || !experience.duration || !experience.description)
       );
     });
 
