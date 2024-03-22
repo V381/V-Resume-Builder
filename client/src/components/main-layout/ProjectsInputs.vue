@@ -28,12 +28,3 @@ const { items, add, remove } = useStoreItems(
   'removeItem'
 );
 </script>
-
-<style scoped>
-.project-title {
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  padding: 1rem;
-}
-</style>

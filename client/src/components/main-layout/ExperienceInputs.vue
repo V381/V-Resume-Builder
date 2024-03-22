@@ -27,15 +27,3 @@ const { items, add, remove } = useStoreItems(
 );
 </script>
 
-<style scoped>
-.organization-title {
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  padding: 1rem;
-}
-
-.organization-title:hover {
-  cursor: pointer;
-}
-</style>

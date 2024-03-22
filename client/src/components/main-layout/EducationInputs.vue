@@ -26,16 +26,3 @@ const { items, add, remove } = useStoreItems(
   'removeItem'
 );
 </script>
-
-<style scoped>
-.school-title {
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  padding: 1rem;
-}
-
-.school-title:hover {
-  cursor: pointer;
-}
-</style>
