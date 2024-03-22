@@ -50,6 +50,13 @@ watch(
 >
 
 <style scoped>
+
+@media (orientation: landscape) {
+  .center-container {
+    margin-top: 3rem;
+  }
+}
+
 .center-container {
   display: flex;
   justify-content: center;

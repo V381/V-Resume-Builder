@@ -1,20 +1,9 @@
 <template>
-    <form-wizard>
-        <tab-content :title="getTranslated('wizardPersonalDetails')">
-           <Form />
-        </tab-content>
-        <tab-content :title="getTranslated('wizardExperience')">
-          <ExperienceInputs />
-        </tab-content>
-        <tab-content :title="getTranslated('wizardEducation')">
-          <EducationInputs />
-        </tab-content>
-        <tab-content  :title="getTranslated('wizardProjects')">
-          <ProjectsInputs />
-        </tab-content>
-        <tab-content :title="getTranslated('wizardPDF')">
-        <div slot="pdf-content" id="pdf-content">
-            <h2><strong>{{ $t('firstName') }}:</strong> {{ form.firstName }} <br><strong>{{ $t('lastName') }}:</strong> {{ form.lastName }}</h2>
+  <form-wizard>
+    <tab-content v-for="tab in tabContents" :key="tab.title" :title="$t(tab.title)">
+      <component :is="tab.component" v-if="tab.component" />
+      <div v-else-if="tab.type === 'pdf'" slot="pdf-content" id="pdf-content">
+        <h2><strong>{{ $t('firstName') }}:</strong> {{ form.firstName }} <br><strong>{{ $t('lastName') }}:</strong> {{ form.lastName }}</h2>
             <hr/>
             <h2>{{ $t('personalInformation') }}</h2>
             <ul>
@@ -60,11 +49,11 @@
                 <strong>{{ $t('projectDescription') }}:</strong> {{ project.description }}<br>
             </li>
             </ul>
+          </div>
+          <div class="container-center" v-if="tab.type === 'pdf'">
+            <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
+            <button class="generate-pdf" @click="generateDOC">{{ $t('wizardDOC') }}</button>
         </div>
-      <div class="container-center">
-        <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
-        <button class="generate-pdf" @click="generateDOC">{{ $t('wizardDOC') }}</button>
-      </div>
     </tab-content>
     <template v-slot:footer="props">
       <div class="wizard-footer-left">
@@ -94,12 +83,13 @@
         </button>
       </div>
     </template>
-</form-wizard>
-</template>
+  </form-wizard>
+  </template>
+
 <script>
 import { useI18n } from 'vue-i18n';
 import Vue3Html2pdf from 'vue3-html2pdf';
-import { ref, onMounted, computed, reactive } from 'vue';
+import { ref, onMounted, computed, reactive, markRaw } from 'vue';
 import { useFormStore } from '@/stores/FormStore';
 import { useEducationStore, useProjectStore, useExperienceStore } from '@/stores/storeTemplate';
 import Form from './Form.vue';
@@ -126,6 +116,14 @@ export default {
     const { t } = useI18n();
 
     const getTranslated = (key) => t(key);
+
+    const tabContents = ref([
+      { title: 'wizardPersonalDetails', component: markRaw(Form) },
+      { title: 'wizardExperience', component: markRaw(ExperienceInputs) },
+      { title: 'wizardEducation', component: markRaw(EducationInputs) },
+      { title: 'wizardProjects', component: markRaw(ProjectsInputs) },
+      { title: 'wizardPDF', component: null, type: 'pdf' },
+    ]);
 
     onMounted(() => {
       html2PdfRef.value = ref('html2Pdf');
@@ -175,25 +173,6 @@ export default {
       fileDownload.click();
       document.body.removeChild(fileDownload);
     };
-
-    const isFormEmpty = computed(() => {
-      return (
-        !form.firstName ||
-        !form.lastName ||
-        !form.email ||
-        !form.phoneNumber ||
-        !form.website ||
-        !form.github ||
-        !form.linkedin ||
-        !form.twitter ||
-        !form.facebook ||
-        !form.instagram ||
-        educationStore.getItems().some(education => !education.name || !education.from || !education.to || !education.qualification) ||
-        projectStore.getItems().some(project => !project.title || !project.link || !project.description) ||
-        experienceStore.getItems().some(experience => !experience.organization || !experience.title || !experience.duration || !experience.description)
-      );
-    });
-
     return {
       form,
       generatePDF,
@@ -201,9 +180,10 @@ export default {
       projectStore,
       experienceStore,
       html2PdfRef,
-      isFormEmpty,
       getTranslated,
-      generateDOC
+      generateDOC,
+      tabContents,
+      t
     };
   },
 };
@@ -212,86 +192,79 @@ export default {
 
 
 <style>
-.wizard-icon-container {
-    background-color: #181818 !important;
-}
-.wizard-progress-bar {
-    background-color: hsla(160, 100%, 37%, 1) !important;
-    color: hsla(160, 100%, 37%, 1) !important;
+.wizard-icon-container,
+.wizard-progress-bar,
+.wizard-btn,
+button {
+  background-color: var(--wizard-primary-color) !important;
 }
 
+.wizard-progress-bar,
 .wizard-btn {
-    background-color: hsla(160, 100%, 37%, 1) !important;
-    border: inherit;
-    border-color: black  !important;;
+  color: var(--wizard-primary-color) !important;
+  border-color: var(--wizard-secondary-color) !important;
 }
 
 .wizard-icon-circle.md.checked {
-  background-color: black; 
-  color: white !important; 
-  border: 2px solid green !important;
+  background-color: var(--wizard-secondary-color);
+  color: var(--wizard-text-color) !important;
+  border: 2px solid var(--wizard-highlight-color) !important;
+}
+
+button,
+strong {
+  font-weight: bold;
 }
 
 .stepTitle {
-    color: white !important;
+  color: var(--wizard-text-color);
 }
-.container {
-    color: red;
-}
-button {
-  background-color: hsla(160, 100%, 37%, 1);
-  padding: 1rem;
-  color: white;
-  margin-top: 1rem;
 
+#pdf-content {
+  color: var(--wizard-secondary-color);
+  background-color: var(--wizard-text-color);
+}
+
+button {
+  padding: var(--wizard-padding-standard);
+  margin-top: var(--wizard-margin-top);
+  color: white;
   width: auto;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .container-center {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-#pdf-content {
-    color:black;
-    background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #pdf-content h2 {
-    margin-left: 1rem;
-    padding-top: 1rem;
-    font-style: italic;
-    font-weight: bold;
+  margin-left: var(--wizard-padding-standard);
+  padding-top: var(--wizard-padding-standard);
+  font-style: italic;
+  font-weight: bold;
 }
 
 #pdf-content ul {
-    margin-bottom: 1rem;
+  margin-bottom: var(--wizard-margin-top);
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
-strong {
-  font-weight: bold;
-}
-.wizard-card-footer .wizard-footer-left .wizard-button {
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: lighgreen;
-  width: auto;
-}
+.wizard-card-footer .wizard-footer-left .wizard-button,
 .wizard-card-footer .wizard-footer-right .wizard-button {
   padding: 10px;
-  border-radius: 6px;
+  border-radius: var(--wizard-border-radius);
   cursor: pointer;
+  background-color: lighgreen;
 }
+
 .wizard-card-footer .wizard-footer-right .finish-button {
   display: none;
 }
