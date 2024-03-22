@@ -76,7 +76,6 @@
 
 <script setup>
 import Input from "@/components/main-layout/Input.vue";
-import { ref } from "vue";
 
 const props = defineProps({
   items: Array,
@@ -87,6 +86,7 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
 .organization-title, .school-title, .project-title {
   color: white;
   font-size: 2rem;

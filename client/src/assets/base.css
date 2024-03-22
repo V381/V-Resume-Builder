@@ -8,6 +8,14 @@
   --container-bg-color: hsla(0, 100%, 50%, 1);
   --label-text-color: white;
   --title-text-color: white;
+  --wizard-primary-color: hsla(160, 100%, 37%, 1);
+  --wizard-secondary-color: black;
+  --wizard-highlight-color: green;
+  --wizard-text-color: white;
+  --wizard-background-dark: #181818;
+  --wizard-padding-standard: 1rem;
+  --wizard-margin-top: 1rem;
+  --wizard-border-radius: 6px;
 
   --vt-c-black: #181818;
   --vt-c-black-soft: #222222;
@@ -108,14 +116,13 @@ body {
   width: 100%;
 }
 .remove-button {
-  background-color: var(--container-bg-color);
-  color: var(--button-text-color);
+  background-color: var(--container-bg-color) !important;
+  color: var(--button-text-color) !important;
   cursor: pointer;
   width: auto;
 }
 
 button {
-  background-color: var(--button-bg-color);
   padding: 1rem;
   color: var(--button-text-color);
   margin-top: 1rem;
