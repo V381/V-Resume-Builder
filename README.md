@@ -37,7 +37,7 @@ Make sure you have `npm` installed on your machine. To install `npm`, follow the
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/V381/V-Resume-Builder.git
 Navigate to the project directory:
 sh
 Copy code
