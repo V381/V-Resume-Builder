@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import Header from './components/main-layout/Header.vue';
-import FormSteps from "./components/main-layout/FormSteps.vue";
+import Header from '@/components/common/Header.vue';
+import FormSteps from "@/components/features/FormSteps.vue";
 
 </script>
 

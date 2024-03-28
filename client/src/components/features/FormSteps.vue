@@ -92,10 +92,10 @@ import Vue3Html2pdf from 'vue3-html2pdf';
 import { ref, onMounted, computed, reactive, markRaw } from 'vue';
 import { useFormStore } from '@/stores/FormStore';
 import { useEducationStore, useProjectStore, useExperienceStore } from '@/stores/storeTemplate';
-import Form from './Form.vue';
-import EducationInputs from './EducationInputs.vue';
-import ProjectsInputs from './ProjectsInputs.vue';
-import ExperienceInputs from './ExperienceInputs.vue';
+import Form from '@/components/features/Form.vue';
+import EducationInputs from '@/components/education/EducationInputs.vue';
+import ProjectsInputs from '@/components/projects/ProjectsInputs.vue';
+import ExperienceInputs from '@/components/experience/ExperienceInputs.vue';
 import html2pdf from 'html2pdf.js';
 
 export default {

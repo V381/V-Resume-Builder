@@ -1,6 +1,6 @@
 <script setup>
 import { ModalsContainer, useModal } from 'vue-final-modal';
-import SelectLanguage from "./SelectLanguage.vue";
+import SelectLanguage from "@/components/utilities/SelectLanguage.vue";
 import CountryFlag from 'vue-country-flag-next';
 import { ref, watch, computed } from 'vue';
 import { changeLocale, i18n } from '@/main';
