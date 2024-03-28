@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-    import MainInformationInputs from "./MainInformationInputs.vue";
+    import MainInformationInputs from "@/components/information/MainInformationInputs.vue";
     const props = defineProps(['backgroundColor']);
 
 </script>

@@ -2,13 +2,13 @@
   <div>
     <CustomForm 
       :items="items"
-      formType="experience"
+      formType="project"
       :organizationTitleKey="$t('organizationCompany')"
       :titleKey="$t('organizationTitle')"
       :durationKey="$t('duration')"
       :descriptionKey="$t('description')"
-      :removeKey="$t('removeExperience')"
-      :addKey="$t('addExperience')"
+      :removeKey="$t('removeProject')"
+      :addKey="$t('addProject')"
       :remove="remove"
       :add="add"
     />
@@ -16,14 +16,13 @@
 </template>
 
 <script setup>
-import { useExperienceStore } from "@/stores/storeTemplate";
+import { useProjectStore } from "@/stores/storeTemplate";
 import useStoreItems from "@/helpers/useStoreItems";
-import CustomForm from "./CustomForm.vue";
+import CustomForm from "@/components/features/CustomForm.vue";
 
 const { items, add, remove } = useStoreItems(
-  useExperienceStore,
+  useProjectStore,
   'addItem',
   'removeItem'
 );
 </script>
-

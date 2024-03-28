@@ -75,7 +75,7 @@
 </template>
 
 <script setup>
-import Input from "@/components/main-layout/Input.vue";
+import Input from "@/components/common/Input.vue";
 
 const props = defineProps({
   items: Array,

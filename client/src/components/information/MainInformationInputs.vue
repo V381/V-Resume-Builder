@@ -33,8 +33,8 @@
 
 <script setup>
 
-import Input from "./Input.vue";
-import { useFormStore } from "../../stores/FormStore";
+import Input from "@/components/common/Input.vue";
+import { useFormStore } from "@/stores/FormStore";
 import { watch } from 'vue';
 const form = useFormStore();
 
