@@ -1,0 +1,7 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/dist/landing.html" },
+      { "source": "/app", "destination": "/dist/index.html" }
+    ]
+  }
+  
