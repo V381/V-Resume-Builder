@@ -3,6 +3,7 @@
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
+      "cvQuality": "CV Quality Score",
       "phoneNumber": "Phone number",
       "website": "Your website",
       "github": "Github",
@@ -50,6 +51,7 @@
     },
     "rs": {
       "firstName": "Ime",
+      "cvQuality": "Kvalitet CV",
       "lastName": "Prezime",
       "email": "E-pošta",
       "phoneNumber": "Broj telefona",
