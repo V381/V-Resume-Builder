@@ -33,7 +33,7 @@ watch(() => i18n.global.locale.value, (newLocale) => {
 import { onMounted, onUnmounted } from 'vue';
 
 onMounted(() => {
-  document.title = 'My Page Title';
+  document.title = 'V-Resume Buider || V-Resume Creator';
 
   const metaDescription = document.createElement('meta');
   metaDescription.name = 'description';
