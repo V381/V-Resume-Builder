@@ -30,6 +30,32 @@ const flag = computed(() => {
 watch(() => i18n.global.locale.value, (newLocale) => {
   console.log(`Current locale changed to: ${newLocale}`);
 });
+import { onMounted, onUnmounted } from 'vue';
+
+onMounted(() => {
+  document.title = 'My Page Title';
+
+  const metaDescription = document.createElement('meta');
+  metaDescription.name = 'description';
+  metaDescription.content = 'Create your own CV for free. Download PDF or WORD file.';
+  document.head.appendChild(metaDescription);
+
+  const metaKeywords = document.createElement('meta');
+  metaKeywords.name = 'keywords';
+  metaKeywords.content = 'create, your own, cv, resume, free, download, pdf';
+  document.head.appendChild(metaKeywords);
+
+  const metaAuthor = document.createElement('meta');
+  metaAuthor.name = 'author';
+  metaAuthor.content = 'Pavle Paunovic';
+  document.head.appendChild(metaAuthor);
+
+  onUnmounted(() => {
+    document.head.removeChild(metaDescription);
+    document.head.removeChild(metaKeywords);
+    document.head.removeChild(metaAuthor);
+  });
+});
 </script>
 
 <template>
