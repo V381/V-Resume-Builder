@@ -1,7 +1,8 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/dist/landing.html" },
-      { "source": "/app", "destination": "/dist/index.html" }
-    ]
-  }
-  
+  "redirects": [
+    { "source": "/", "destination": "/landing.html", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/app", "destination": "/index.html" }
+  ]
+}
