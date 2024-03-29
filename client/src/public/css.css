@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+:root {
+    --color-white-soft: #f8f8f8;
+    --color-white-mute: #f2f2f2;
+    --color-button-bg: hsla(160, 100%, 37%, 1);
+    --color-button-text: #fff;
+    --color-container-bg: hsla(0, 100%, 50%, 1);
+    --color-label-text: #fff;
+    --color-title: hsla(160, 100%, 37%, 1);
+    --color-title-highlight: red;
+    --color-primary: hsla(160, 100%, 37%, 1);
+    --color-secondary: #000;
+    --color-highlight: green;
+    --color-text: #fff;
+    --color-background-dark: #181818;
+    --padding-standard: 1rem;
+    --margin-top-standard: 1rem;
+    --border-radius-standard: 6px;
+    --shadow-standard: 2px 2px 2px #000;
+    --container-width: 1600px;
+    --border-top-main: 1px solid var(--color-highlight);
+}
+
+header {
+    background-color: var(--color-background-dark);
+    padding: var(--padding-standard) var(--padding-standard) var(--padding-standard) var(--padding-standard);
+    text-align: center;
+    color: var(--color-text);
+    box-shadow: var(--shadow-standard);
+}
+
+header h1 {
+    color: var(--color-primary);
+}
+
+h1 span {
+    color: var(--color-title-highlight);
+}
+
+.left-side {
+    flex: 1; 
+    padding-right: var(--padding-standard); 
+    text-align: center;
+  }
+ul li {
+    list-style-type: none;
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+  .right-side {
+    flex-basis: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .right-side img {
+    width: 70%; 
+    height: auto; 
+  }
+
+.container {
+    max-width: var(--container-width); 
+    margin: auto;
+    padding: 0 var(--padding-standard);
+    width: 100%;
+  }
+  
+  @media (max-width: 1024px) {
+    :root {
+      --container-width: 85%; 
+      --padding-standard: 1rem; 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    :root {
+      --container-width: 90%;
+      --padding-standard: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    :root {
+      --container-width: 95%;
+      --padding-standard: 0.25rem;
+    }
+  }
+  
+
+main {
+    background-color: var(--color-background-dark);
+    border-top: var(--border-top-main);
+    color: var(--color-text);
+}
+
+main img {
+    width: 70%;
+    padding: 0;
+}
+
+
+.container {
+    text-align: center;
+}
+
+.button {
+    background-color: green;
+    padding: 1rem;
+    width: 50%;
+    color: white;
+    margin-bottom: 5rem;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+footer {
+    border-top: 1px solid green;
+    padding: 2rem;
+    background-color: var(--color-background-dark);
+    color: var(--color-white-mute);
+}
