@@ -6,6 +6,7 @@ V-Resume Builder is a user-friendly web application built with Vue 3 and Pinia t
 
 - **Interactive Forms:** Fill out your details through a series of intuitive forms.
 - **Export Options:** Download your CV in PDF format or print it directly or in DOC file.
+- **Basic Accessability Implementation:**
 
 ## Project Structure
 
