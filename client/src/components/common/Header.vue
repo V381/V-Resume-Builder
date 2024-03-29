@@ -4,6 +4,10 @@ import SelectLanguage from "@/components/utilities/SelectLanguage.vue";
 import CountryFlag from 'vue-country-flag-next';
 import { ref, watch, computed } from 'vue';
 import { changeLocale, i18n } from '@/main';
+import CVScoring from "@/components/features/CVScoring.vue";
+import { useCvStore } from '@/stores/CVStore'; 
+
+const cvStore = useCvStore(); 
 
 const { open, close } = useModal({
   component: SelectLanguage,
@@ -31,6 +35,7 @@ watch(() => i18n.global.locale.value, (newLocale) => {
 <template>
   <div class="main-header">
     <h1 class="red center">V <span class="green">Resume Builder</span> <br/> <span class="author">created with <span class="heart">♡</span> by Pavle Paunovic</span></h1>
+    <div class="scoring"><CVScoring :cvData="cvStore.cvData" /></div>
     <div class="language-flag-container">
       <p>{{ $t('language') }}</p>
       <CountryFlag :country="flag" size="big" @click="() => open()" />
