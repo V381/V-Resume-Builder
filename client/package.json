@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kyvg/vue3-notification": "^3.2.1",
     "html2pdf.js": "^0.10.1",
     "jenesius-vue-modal": "^1.11.1",
     "jspdf": "^2.5.1",
