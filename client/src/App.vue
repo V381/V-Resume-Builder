@@ -3,6 +3,7 @@
     <Header />
 
     <FormSteps />
+    <notifications />
 
     <RouterView />
   </div>

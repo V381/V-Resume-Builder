@@ -10,6 +10,7 @@ import router from './router'
 import VueHtml2pdf from 'vue-html2pdf';
 import { createI18n } from 'vue-i18n'
 import messages from '@/i18n/translations.json';
+import Notifications from '@kyvg/vue3-notification';
 
 
 const datetimeFormats = {
@@ -57,6 +58,7 @@ app.use(Vue3FormWizard);
 app.use(VueHtml2pdf);
 app.use(vfm);
 app.use(i18n)
+app.use(Notifications);
 app.mount('#app')
 
 export { i18n, changeLocale };

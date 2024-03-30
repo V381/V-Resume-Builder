@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p v-if="items.length === 0">{{$t("adviceProjects")}}</p>
     <CustomForm 
       :items="items"
       formType="project"
