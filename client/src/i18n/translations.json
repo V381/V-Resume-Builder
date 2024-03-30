@@ -47,7 +47,12 @@
       "wizardPDF": "Download PDF",
       "wizardDOC": "Generate DOC - You can edit DOC file in Word",
       "previous": "Previous",
-      "next": "Next"
+      "next": "Next",
+      "advice": "Advice for better CV quality",
+      "suggestion": "I suggest you to enter text in {fieldName}.",
+      "iskustvoSaveti": "I suggest you add some work experience. Leave empty if you do not have",
+      "adviceEducation": "I suggest you add some education. Leave empty if you do not have",
+      "adviceProjects": "I suggest you add some projects. Companies love projects. Leave empty if you do not have"
     },
     "rs": {
       "firstName": "Ime",
@@ -97,7 +102,12 @@
       "wizardPDF": "Preuzmi PDF fajl",
       "wizardDOC": "Preuzmi DOC fajl - Mozes editovati ovaj fajl u Wordu",
       "previous": "Prethodni korak",
-      "next": "Sledeći korak"
+      "next": "Sledeći korak",
+      "advice": "Saveti za bolji kvalitet CV",
+      "suggestion": "Preporucujem ti ukucas {fieldName}.",
+      "iskustvoSaveti": "Preporucujem ti da dodas radno iskutvo. Ako nemas iskustva stisni dugme Nastavi dalje",
+      "adviceEducation": "Preporucujem ti da dodas edukaciju(Skola, Fakultet...). Ako zelis da preskocis ovaj korak stisni dugme Nastavi dalje",
+      "adviceProjects": "Preporucujem ti da dodas projekte. Poslodavci vole interestante projekte"
     }
   }
   

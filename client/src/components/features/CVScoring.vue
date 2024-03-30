@@ -6,6 +6,7 @@
   
   <script>
   import { ref, watch, onMounted } from 'vue';
+  import { notify } from '@kyvg/vue3-notification';
   
   export default {
     props: {
@@ -23,40 +24,37 @@
     },
     setup(props) {
       const score = ref(0);
-      const feedback = ref([]);
   
       const calculateScore = () => {
         let tempScore = 0;
-        const tempFeedback = [];
+  
         if (props.cvData.personalInfo) {
-          const completenessCriteria = ['firstName', 'email'];
-          completenessCriteria.forEach((field) => {
+          const completenessCriteria = ['firstName', 'email', 'lastName', 'phoneNumber', 'website'];
+          completenessCriteria.forEach(field => {
             if (!props.cvData.personalInfo[field]) {
-              tempFeedback.push(`Missing ${field} information.`);
+              console.log('error');
             } else {
-              tempScore += 10; 
+              tempScore += 5;
             }
           });
         }
   
-        ['projects', 'education', 'experience', 'skills'].forEach((section) => {
+        ['projects', 'education', 'experience', 'skills'].forEach(section => {
           if (Array.isArray(props.cvData[section]) && props.cvData[section].length) {
-            tempScore += props.cvData[section].length * 5; 
-          } else {
-            tempFeedback.push(`Add more to your ${section}.`);
+            tempScore += props.cvData[section].length * 5;
+        } else {
+            console.log('error');
           }
         });
   
         score.value = tempScore;
-        feedback.value = tempFeedback;
       };
-      watch(() => props.cvData, calculateScore, { deep: true });
   
+      watch(() => props.cvData, calculateScore, { deep: true });
       onMounted(calculateScore);
   
       return {
-        score,
-        feedback,
+        score
       };
     },
   };

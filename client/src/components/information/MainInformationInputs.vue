@@ -3,9 +3,9 @@
     <div class="input-container">
       <div class="column">
         <label for="first-name">{{ $t('firstName') }}</label>
-        <Input v-model="form.firstName" :placeholder="$t('firstName')" />
+        <Input v-model="form.firstName" :placeholder="$t('firstName')" :fieldName="$t('firstName')"/>
         <label for="email">{{ $t('email') }}</label>
-        <Input v-model="form.email" :placeholder="$t('email')" />
+        <Input v-model="form.email" :placeholder="$t('email')" :fieldName="$t('email')"/>
         <label for="your-website">{{ $t('website') }}</label>
         <Input v-model="form.website" :placeholder="$t('website')" />
         <label for="linkedin">{{ $t('linkedin') }}</label>
@@ -16,10 +16,10 @@
 
       <div class="column">
         <label for="last-name">{{ $t('lastName') }}</label>
-        <Input v-model="form.lastName" :placeholder="$t('lastName')" />
+        <Input v-model="form.lastName" :placeholder="$t('lastName')" :fieldName="$t('lastName')"/>
 
         <label for="phone-number">{{ $t('phoneNumber') }}</label>
-        <Input v-model="form.phoneNumber" :placeholder="$t('phoneNumber')" />
+        <Input v-model="form.phoneNumber" :placeholder="$t('phoneNumber')" :fieldName="$t('phoneNumber')" />
         <label for="github">{{ $t('github') }}</label>
         <Input v-model="form.github" :placeholder="$t('github')" />
         <label for="twitter">{{ $t('twitter') }}</label>
