@@ -47,6 +47,15 @@ export const createStoreTemplate = (id) => {
         return this.items;
       },
     },
+    persist: {
+      enabled: true,
+      strategies: [
+        {
+          key: id,
+          storage: localStorage,
+        },
+      ],
+    },
   });
 };
 

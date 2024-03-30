@@ -11,6 +11,7 @@ import VueHtml2pdf from 'vue-html2pdf';
 import { createI18n } from 'vue-i18n'
 import messages from '@/i18n/translations.json';
 import Notifications from '@kyvg/vue3-notification';
+import piniaPersist from 'pinia-plugin-persist';
 
 
 const datetimeFormats = {
@@ -34,8 +35,6 @@ const datetimeFormats = {
     }
 };
 
-
-
 const i18n = createI18n({
     globalInjection: true,
     locale: 'en',
@@ -51,8 +50,10 @@ const changeLocale = (newLocale) => {
   
 const vfm = createVfm()
 const app = createApp(App)
+const pinia = createPinia();
 
-app.use(createPinia())
+pinia.use(piniaPersist)
+app.use(pinia)
 app.use(router)
 app.use(Vue3FormWizard);
 app.use(VueHtml2pdf);

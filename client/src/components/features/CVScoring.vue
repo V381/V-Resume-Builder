@@ -32,7 +32,7 @@
           const completenessCriteria = ['firstName', 'email', 'lastName', 'phoneNumber', 'website'];
           completenessCriteria.forEach(field => {
             if (!props.cvData.personalInfo[field]) {
-              console.log('error');
+              console.log('Data entered');
             } else {
               tempScore += 5;
             }
@@ -43,7 +43,7 @@
           if (Array.isArray(props.cvData[section]) && props.cvData[section].length) {
             tempScore += props.cvData[section].length * 5;
         } else {
-            console.log('error');
+            console.log('Data entered');
           }
         });
   

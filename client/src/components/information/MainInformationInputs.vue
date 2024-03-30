@@ -38,13 +38,9 @@ import { useFormStore } from "@/stores/FormStore";
 import { watch } from 'vue';
 const form = useFormStore();
 
-
-watch(
-  () => form.getFormData(),
-  (newData) => {
-    console.log('Form data updated in MainInformationInputs:', newData);
-  }
-);
+watch(() => useFormStore.$state, (newState) => {
+  Object.assign(form, newState);
+}, { deep: true });
 
 </script>
 >
