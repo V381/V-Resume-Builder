@@ -17,16 +17,19 @@
                 <li v-if="form.instagram"><strong>{{ $t('instagram') }}:</strong> {{ form.instagram}}</li>
             </ul>
             <hr/>
+            <template v-if="experienceStore.getItems().length !== 0">
             <h2>{{ $t('workExperience') }}</h2>
             <ul>
-            <li v-for="(experience, index) in experienceStore.getItems()" :key="index">
-                <strong>{{ $t('organizationCompany') }}:</strong> {{ experience.organization }}<br>
-                <strong>{{ $t('organizationTitle') }}:</strong> {{ experience.title }}<br>
-                <strong>{{ $t('duration') }}:</strong> {{ experience.duration }}<br>
-                <strong>{{ $t('description') }}:</strong> {{ experience.description }}<br>
-            </li>
-            </ul>
+                <li v-for="(experience, index) in experienceStore.getItems()" :key="index">
+                    <strong>{{ $t('organizationCompany') }}:</strong> {{ experience.organization }}<br>
+                    <strong>{{ $t('organizationTitle') }}:</strong> {{ experience.title }}<br>
+                    <strong>{{ $t('duration') }}:</strong> {{ experience.duration }}<br>
+                    <strong>{{ $t('description') }}:</strong> {{ experience.description }}<br>
+                </li>
+              </ul>
+            </template>
             <hr/>
+            <template v-if="educationStore.getItems().length !== 0">
             <h2>{{ $t('education') }}</h2>
             <ul>
               <template v-for="(education, index) in educationStore.getItems()" :key="index">
@@ -38,17 +41,19 @@
               </li>
             </template>
             </ul>
-            
+            </template>
             <hr/>
 
-            <h2>{{ $t('projects') }}</h2>
-            <ul>
-            <li v-for="(project, index) in projectStore.getItems()" :key="index">
-                <strong>{{ $t('projectTitle') }}:</strong> {{ project.title }}<br>
-                <strong>{{ $t('projectLink') }}:</strong> {{ project.link }}<br>
-                <strong>{{ $t('projectDescription') }}:</strong> {{ project.description }}<br>
-            </li>
-            </ul>
+            <template  v-if="projectStore.getItems().length !== 0">
+              <h2>{{ $t('projects') }}</h2>
+              <ul>
+              <li v-for="(project, index) in projectStore.getItems()" :key="index">
+                  <strong>{{ $t('projectTitle') }}:</strong> {{ project.title }}<br>
+                  <strong>{{ $t('projectLink') }}:</strong> {{ project.link }}<br>
+                  <strong>{{ $t('projectDescription') }}:</strong> {{ project.description }}<br>
+              </li>
+              </ul>
+            </template>
           </div>
           <div class="container-center" v-if="tab.type === 'pdf'">
             <button class="generate-pdf" @click="generatePDF">{{ $t('generatePDF') }}</button>
