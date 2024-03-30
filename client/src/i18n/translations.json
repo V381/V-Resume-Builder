@@ -105,8 +105,8 @@
       "next": "Sledeći korak",
       "advice": "Saveti za bolji kvalitet CV",
       "suggestion": "Preporucujem ti ukucas {fieldName}.",
-      "iskustvoSaveti": "Preporucujem ti da dodas radno iskutvo. Ako nemas iskustva stisni dugme Nastavi dalje",
-      "adviceEducation": "Preporucujem ti da dodas edukaciju(Skola, Fakultet...). Ako zelis da preskocis ovaj korak stisni dugme Nastavi dalje",
+      "iskustvoSaveti": "Preporucujem ti da dodas radno iskutvo. Ako nemas iskustva stisni dugme Sledeci korak",
+      "adviceEducation": "Preporucujem ti da dodas edukaciju(Skola, Fakultet...). Ako zelis da preskocis ovaj korak stisni dugme Sledeci korak",
       "adviceProjects": "Preporucujem ti da dodas projekte. Poslodavci vole interestante projekte"
     }
   }
