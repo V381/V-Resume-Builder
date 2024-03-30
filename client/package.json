@@ -14,6 +14,7 @@
     "jenesius-vue-modal": "^1.11.1",
     "jspdf": "^2.5.1",
     "pinia": "^2.1.7",
+    "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.4.15",
     "vue-country-flag-next": "^2.3.2",
     "vue-final-modal": "^4.5.4",

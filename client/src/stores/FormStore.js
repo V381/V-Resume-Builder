@@ -32,4 +32,13 @@ export const useFormStore = defineStore({
       };
     },
   },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: 'form',
+        storage: localStorage,
+      },
+    ],
+  },
 });

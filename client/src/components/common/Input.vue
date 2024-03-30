@@ -3,33 +3,33 @@
     <input 
       :type="type"
       :placeholder="placeholder"
-      v-model="modelValue"
-      @input="updateValue"
+      :value="modelValue"
+      @input="updateValue($event.target.value)"
       @blur="validateField"
     />
   </div>
 </template>
 
 <script setup>
-import { defineProps, ref, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import { notify } from '@kyvg/vue3-notification';
-import { useI18n } from 'vue-i18n'; 
+import { useI18n } from 'vue-i18n';
+
 const props = defineProps({
   placeholder: String,
   type: String,
-  fieldName: String 
+  fieldName: String,
+  modelValue: String,
 });
 const emits = defineEmits(['update:modelValue']);
-const modelValue = ref('');
 const { t } = useI18n(); 
 
-const updateValue = (event) => {
-  modelValue.value = event.target.value;
-  emits('update:modelValue', modelValue.value);
+const updateValue = (newValue) => {
+  emits('update:modelValue', newValue);
 };
 
 const validateField = () => {
-  if (modelValue.value.trim() === '') {
+  if (props.modelValue.trim() === '') {
     if (props?.fieldName) {
       notify({
         title: t('advice'), 
@@ -40,6 +40,7 @@ const validateField = () => {
   }
 };
 </script>
+
 
 <style scoped>
 input {
