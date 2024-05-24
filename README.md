@@ -22,7 +22,7 @@ The project is structured as follows:
   - `stores`: Pinia store modules for state management.
   - `views`: Vue components representing pages.
 
-- `public`: Contains the index.html and any assets that will not be processed by Webpack.
+- `public`: Contains the index.html and any assets that will not be processed by Vite.
 
 - `App.vue`: Root Vue component.
 - `main.js`: Entry point for the application where Vue instance is created.
